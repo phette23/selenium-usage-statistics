@@ -1,0 +1,14 @@
+# Automatic E-Resource Statistics
+
+Uses [Selenium](http://selenium-python.readthedocs.org/en/latest/) to script opening three common library vendor usage statistic sites in a browser, signing in, and running COUNTER JR 1 reports.
+
+## Getting Started
+
+- Have Python 2.7 installed
+- `pip install -r requirements.txt`, if you don't have pip already then `easy_install pip` first
+- Copy example.json to logins.json & fill in your EBSCO, ProQuest, Gale admin credentials
+- Run jr1-stats.py
+
+## To Do
+
+This is mostly a proof-of-concept script at this point. Eventually it would be nice to make it easier to add additional vendors, for instance with a get_vendor class which EBSCO, ProQuest, etc. are all instances of. It'd also be nice to be able to specify time ranges or report types but that's a challenge given variability of vendor interfaces.

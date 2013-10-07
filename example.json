@@ -1,0 +1,10 @@
+{
+  "ebsco": {
+    "username": "example username",
+    "password": "example password"
+  },
+  "proquest": {
+    "username": "2nd example username",
+    "password": "2nd example password"
+  }
+}
