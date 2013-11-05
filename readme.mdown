@@ -5,9 +5,20 @@ Uses [Selenium](http://selenium-python.readthedocs.org/en/latest/) to script ope
 ## Getting Started
 
 - Have Python 2.7 installed
+- Install [the Selenium IDE add-on](http://www.seleniumhq.org/projects/ide/) for Firefox
 - `pip install -r requirements.txt`, if you don't have pip already then `easy_install pip` first
 - Copy example.json to logins.json & fill in your EBSCO, ProQuest, Gale admin credentials
 - Run jr1-stats.py, e.g. by running `python jr1-stats.py` from within the project's directory
+
+If you get a "No such file or directory" error (see error.txt for example), you may have your Firefox binary in an unexpected location. For instance, I installed Firefox on a Mac with [homebrew cask](https://github.com/phinze/homebrew-cask) which puts Firefox.app my user's Applications folder, not the root Applications folder. If you run into the same problem on a Mac, symlinking Firefox.app into /Applications can fix it. Open Terminal.app (in Utilities) and run:
+
+```bash
+cd /Applications && ln -s ~/Applications/Firefox.app
+```
+
+where "~/Applications/Firefox.app" is wherever your non-standard location for Firefox is.
+
+Hat-tip to [this StackOverflow thread](http://stackoverflow.com/questions/8334706/selenium-and-python-on-snow-leopard) for diagnosing that issue.
 
 ## To Do
 

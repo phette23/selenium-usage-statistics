@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "jr1-stats.py", line 127, in <module>
+    main()
+  File "jr1-stats.py", line 13, in main
+    get_ebsco()
+  File "jr1-stats.py", line 32, in get_ebsco
+    browser = webdriver.Firefox()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 59, in __init__
+    self.binary, timeout),
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/extension_connection.py", line 47, in __init__
+    self.binary.launch_browser(self.profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_binary.py", line 60, in launch_browser
+    self._start_from_profile_path(self.profile.path)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_binary.py", line 83, in _start_from_profile_path
+    env=self._firefox_env).communicate()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 711, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1308, in _execute_child
+    raise child_exception
+OSError: [Errno 2] No such file or directory
