@@ -1,9 +1,12 @@
 #! /usr/bin/env python
 from selenium import webdriver
+from selenium.webdriver.support.ui import Select
 import json
 from time import sleep
+import datetime
 
 cred = json.load( open( 'logins.json' ) )
+today = datetime.date.today()
 
 
 def main():
@@ -56,12 +59,20 @@ def get_proquest():
   browser.get( url + 'requestusagereports' )
 
   # choose correct report type
-  options = browser.find_element_by_css_selector( '#reportType' )
-  for option in options.find_elements_by_tag_name( 'option' ):
-    if option.get_attribute( 'value' ) == 'COUNTER Journal Report 1':
-      option.click()
+  reports = Select( browser.find_element_by_css_selector( '#reportType' ) )
+  reports.select_by_visible_text( 'COUNTER Journal Report 1' )
 
-  # TODO: choose right month
+  # Need to get date in format 'Nov 2013' where month is last month
+  last_month = today.replace( day=1 ) - datetime.timedelta( days=1 )
+  last_month = last_month.strftime( '%b %Y' )
+
+  # set report time range
+  fromMonths = Select( browser.find_element_by_css_selector( '#usagePeriodFromValue' ) )
+  fromMonths.select_by_visible_text( last_month )
+  # optionally, set To month to same
+  #toMonths = Select( browser.find_element_by_css_selector( '#usagePeriodToValue' ) )
+  #toMonths.select_by_visible_text( last_month )
+
   browser.find_element_by_css_selector( '#submitUsageReport' ).click()
 
 
