@@ -1,13 +1,13 @@
 # Automatic E-Resource Statistics
 
-Uses [Selenium](http://selenium-python.readthedocs.org/en/latest/) to script opening three common library vendor usage statistic sites in a browser, signing in, and running COUNTER JR 1 reports.
+Uses [Selenium](http://selenium-python.readthedocs.org/en/latest/) to script opening four common library vendor usage statistic sites in a browser, signing in, and running COUNTER JR 1 reports.
 
 ## Getting Started
 
 - Have Python 2.7 installed
 - `pip install -r requirements.txt`, if you don't have pip already then `easy_install pip` first
 - Copy example.json to logins.json & fill in your EBSCO, ProQuest, Gale admin credentials
-- Run jr1-stats.py
+- Run jr1-stats.py, e.g. by running `python jr1-stats.py` from within the project's directory
 
 ## To Do
 
