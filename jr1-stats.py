@@ -13,6 +13,7 @@ def main():
   get_ebsco()
   get_proquest()
   get_gale()
+  get_newsbank()
 
 
 def sign_in( browser, vendor, selectors ):
@@ -110,6 +111,17 @@ def get_gale():
 
   # hit "Finish" button, last of 3 here
   browser.find_elements_by_tag_name( 'button' )[ 2 ].click()
+
+
+def get_newsbank():
+  browser = webdriver.Firefox()
+  url = 'http://stats.newsbank.com/'
+  browser.get( url )
+
+  # usage stats are IP authenticated, no login necessary but only works from on-campus
+  # go to COUNTER reports
+  browser.find_element_by_link_text( 'COUNTER' ).click()
+  # defaults to JR1, we're done here
 
 
 main()
