@@ -1,6 +1,8 @@
 # Automatic E-Resource Statistics
 
-Uses [Selenium](http://selenium-python.readthedocs.org/en/latest/) to script opening four common library vendor usage statistic sites in a browser, signing in, and running COUNTER JR 1 reports.
+Uses [Selenium](http://selenium-python.readthedocs.org/en/latest/) to script opening four common library vendor usage statistic sites in a browser, signing in, and running COUNTER JR 1 reports. See it in action:
+
+![script in action](https://raw.github.com/phette23/selenium-usage-statistics/master/in-action.gif)
 
 ## Getting Started
 
