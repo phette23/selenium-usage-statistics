@@ -105,4 +105,5 @@ def get_newsbank():
   # defaults to JR1, we're done here
 
 
-main()
+if __name__ == '__main__':
+  main()
