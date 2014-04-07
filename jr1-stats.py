@@ -11,9 +11,9 @@ today = datetime.date.today()
 
 def main():
   get_ebsco()
-  get_proquest()
   get_gale()
   get_newsbank()
+  get_proquest()
 
 
 def sign_in( browser, vendor, selectors ):
@@ -25,7 +25,8 @@ def sign_in( browser, vendor, selectors ):
   find = browser.find_element_by_css_selector
   find( selectors[ 'un' ] ).send_keys( cred[ vendor ][ 'username' ] )
   find( selectors[ 'pw' ] ).send_keys( cred[ vendor ][ 'password' ] )
-  find( selectors[ 'submit' ] ).click()
+  if 'submit' in selectors:
+    find( selectors[ 'submit' ] ).click()
 
 
 def get_ebsco():
@@ -37,7 +38,7 @@ def get_ebsco():
     'un': '#UserName',
     'pw': '#Password',
     'submit': '#Submit'
-    } )
+  } )
 
   # COUNTER reports
   browser.get( url + 'Reports/SelectCounterReportsForm.aspx' )
@@ -50,31 +51,11 @@ def get_proquest():
   url = 'http://admin.proquest.com/'
   browser.get( url )
 
+  # fill in credentials but don't submit
   sign_in( browser, 'proquest', {
     'un': '#username',
-    'pw': '#password',
-    'submit': '#submit_0'
-    } )
-
-  # Request usage reports
-  browser.get( url + 'requestusagereports' )
-
-  # choose correct report type
-  reports = Select( browser.find_element_by_css_selector( '#reportType' ) )
-  reports.select_by_visible_text( 'COUNTER Journal Report 1' )
-
-  # Need to get date in format 'Nov 2013' where month is last month
-  last_month = today.replace( day=1 ) - datetime.timedelta( days=1 )
-  last_month = last_month.strftime( '%b %Y' )
-
-  # set report time range
-  fromMonths = Select( browser.find_element_by_css_selector( '#usagePeriodFromValue' ) )
-  fromMonths.select_by_visible_text( last_month )
-  # optionally, set To month to same
-  #toMonths = Select( browser.find_element_by_css_selector( '#usagePeriodToValue' ) )
-  #toMonths.select_by_visible_text( last_month )
-
-  browser.find_element_by_css_selector( '#submitUsageReport' ).click()
+    'pw': '#password'
+  } )
 
 
 def get_gale():
@@ -86,7 +67,7 @@ def get_gale():
     'un': '#user',
     'pw': '#password',
     'submit': '#login'
-    } )
+  } )
 
   # get to Reports page
   # ...plain text username & password over HTTP in a query string, seriously Gale?
